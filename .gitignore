@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+
+.vscode
+
+*.log*
+node_modules/
+public/bundle.js
+public/bundle.js.map
+coverage/
+build/
