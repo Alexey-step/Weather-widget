@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse, AxiosInstance } from "axios";
 
-const URL = "http://api.openweathermap.org/data/2.5";
+const URL = "https://api.openweathermap.org/data/2.5";
 const REQUEST_TIMEOUT = 5000;
 
 const createAPI = (): AxiosInstance => {
