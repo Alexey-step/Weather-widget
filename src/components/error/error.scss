@@ -1,0 +1,19 @@
+@import "../UI/theme/variables.scss";
+@import "../UI/theme/mixins.scss";
+
+.error {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $basic-grey;
+  top: 50%;
+  left: 35%;
+  width: 400px;
+  height: 60px;
+  border: 3px solid $special-red;
+  border-radius: 20px;
+  @include font(30px, 34px);
+  color: $basic-white;
+  z-index: 10;
+}

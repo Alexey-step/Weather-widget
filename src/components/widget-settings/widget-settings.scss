@@ -1,0 +1,17 @@
+@import "../UI/theme/variables.scss";
+@import "../UI/theme/mixins.scss";
+
+.widget-settings {
+  width: 300px;
+  padding: 10px;
+  background-color: $light-grey;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.widget-settings__title {
+  margin: 0;
+  margin-bottom: 15px;
+  @include font(19px, 23px);
+}

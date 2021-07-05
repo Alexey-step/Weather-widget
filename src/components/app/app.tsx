@@ -1,9 +1,10 @@
 import React from "react";
+import Widget from "../widget/widget";
 
 const App: React.FC = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Widget />
     </div>
   );
 };

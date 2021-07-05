@@ -1,0 +1,42 @@
+@import "../UI/theme/mixins.scss";
+@import "../UI/theme/variables.scss";
+
+.weather-card__title {
+  @include font(14px, 18px);
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.weather-card__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.weather-card__img-wrapper {
+  width: 150px;
+  height: 130px;
+}
+
+.weather-card__img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.weather-card__temperature {
+  @include font(38px, 42px);
+}
+
+.weather-card__group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.weather-card__text {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.weather-card__text svg {
+  margin-right: 5px;
+}

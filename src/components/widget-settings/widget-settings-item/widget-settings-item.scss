@@ -1,0 +1,28 @@
+@import "../../UI/theme/variables.scss";
+@import "../../UI/theme/mixins.scss";
+
+.city-item {
+  background-color: $basic-grey;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.city-item__title {
+  margin: 0;
+  @include font(19px, 22px);
+  font-weight: 400;
+}
+
+.city-item__btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus svg,
+  &:hover svg {
+    opacity: 0.7;
+  }
+}

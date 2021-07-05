@@ -1,6 +1,5 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
@@ -74,14 +73,6 @@ module.exports = {
       inject: 'body'
     }),
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'public/favicon.ico'),
-          to: path.resolve(__dirname, 'dist'),
-        }
-      ]
-    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']

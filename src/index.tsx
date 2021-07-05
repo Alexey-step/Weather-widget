@@ -1,5 +1,34 @@
 import React from "react";
-import RenderDOM from "react-dom";
-import App from "../src/components/app/app";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import App from "./components/app/app";
+import createAPI from "./store/api/api";
+import { reducer } from "./store/reducer";
+import { fetchWeather } from "./store/api/api-actions";
 
-RenderDOM.render(<App />, document.querySelector("#root"));
+import "./index.scss";
+
+const api = createAPI();
+
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }),
+});
+
+store.dispatch(fetchWeather());
+
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.querySelector("#root")
+);
