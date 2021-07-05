@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import Widget from "../widget/widget";
 import { store } from "../../index";
 
-// eslint-disable-next-line no-undef
 class WidgetWeather extends HTMLElement {
   // eslint-disable-next-line no-useless-constructor
   constructor() {
