@@ -39,10 +39,3 @@ class WidgetWeather extends HTMLElement {
 }
 
 window.customElements.define("widget-weather", WidgetWeather);
-
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.querySelector("#root")
-// );
