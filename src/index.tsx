@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import App from "./components/app/app";
@@ -12,7 +11,7 @@ import "./index.scss";
 
 const api = createAPI();
 
-const store = configureStore({
+export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -24,11 +23,26 @@ const store = configureStore({
 
 store.dispatch(fetchWeather());
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.querySelector("#root")
-);
+class WidgetWeather extends HTMLElement {
+  connectedCallback() {
+    const mountPoint = document.createElement("div");
+    const shadowRoot = this.attachShadow({ mode: "open" });
+    shadowRoot.appendChild(mountPoint);
+
+    return ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      mountPoint
+    );
+  }
+}
+
+window.customElements.define("widget-weather", WidgetWeather);
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.querySelector("#root")
+// );

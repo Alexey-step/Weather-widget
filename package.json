@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "1.6.0",
+    "@webcomponents/webcomponentsjs": "^2.5.0",
     "axios": "0.21.1",
     "normalize.css": "8.0.1",
     "react": "17.0.2",
