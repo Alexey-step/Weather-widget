@@ -7,7 +7,7 @@ import createAPI from "./store/api/api";
 import { reducer } from "./store/reducer";
 import { fetchWeather } from "./store/api/api-actions";
 
-import "./index.scss";
+import "./components/styles/styles.scss";
 
 const api = createAPI();
 

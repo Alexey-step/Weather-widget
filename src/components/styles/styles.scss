@@ -1,0 +1,22 @@
+@import '~normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import "./partials/theme/mixins.scss";
+@import "./partials/theme/variables.scss";
+
+@import "./partials/blocks/index";
+@import "./partials/blocks/widget.scss";
+@import "./partials/blocks/widget-settings";
+@import "./partials/blocks/wisget-settings-list";
+@import "./partials/blocks/widget-settings-item";
+@import "./partials/blocks/weather-card";
+@import "./partials/blocks/weather-card-description";
+@import "./partials/blocks/add-form.scss";
+@import "./partials/blocks/burger-menu-icon.scss";
+@import "./partials/blocks/close-icon.scss";
+@import "./partials/blocks/enter-arrow-icon.scss";
+@import "./partials/blocks/error.scss";
+@import "./partials/blocks/gear-icon";
+@import "./partials/blocks/location-arrow-icon";
+@import "./partials/blocks/trash-bucket-icon";
+@import "./partials/blocks/spinner";
+
