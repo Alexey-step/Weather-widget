@@ -1,5 +1,4 @@
 import React from "react";
-import "./error.scss";
 
 const Error: React.FC = () => {
   return (

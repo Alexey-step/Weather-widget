@@ -3,8 +3,6 @@ import { CityWeatherAdapted } from "../../types";
 import WeatherCardDescription from "./weather-card-description/weather-card-description";
 import LocationArrowIcon from "../UI/icons/location-arrow-icon/location-arrow-icon";
 
-import "./weather-card.scss";
-
 interface Props {
   city: CityWeatherAdapted;
 }

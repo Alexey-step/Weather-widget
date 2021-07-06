@@ -7,8 +7,6 @@ import CloseIcon from "../UI/icons/close-icon/close-icon";
 import WidgetSettings from "../widget-settings/widget-settings";
 import { CityWeatherAdapted } from "../../types";
 
-import "./widget.scss";
-
 const Widget: React.FC = () => {
   const [open, setOpen] = useState(true);
   const { cities } = useSelector((state: RootState) => state);

@@ -3,8 +3,6 @@ import { CityWeatherAdapted } from "../../../types";
 import WidgetSettingsItem from "../widget-settings-item/widget-settings-item";
 import withSpinner from "../../../hocs/with-spinner/with-spinner";
 
-import "./wisget-settings-list.scss";
-
 interface Props {
   cities: CityWeatherAdapted[];
 }
