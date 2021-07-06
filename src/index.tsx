@@ -24,16 +24,16 @@ export const store = configureStore({
 store.dispatch(fetchWeather());
 
 class WidgetWeather extends HTMLElement {
+  mountPoint: HTMLDivElement;
+
   connectedCallback() {
-    const mountPoint = document.createElement("div");
-    const shadowRoot = this.attachShadow({ mode: "open" });
-    shadowRoot.appendChild(mountPoint);
+    this.mountPoint = document.createElement("div");
 
     return ReactDOM.render(
       <Provider store={store}>
         <App />
       </Provider>,
-      mountPoint
+      this.mountPoint
     );
   }
 }
