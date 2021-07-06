@@ -5,7 +5,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import App from "./components/app/app";
 import createAPI from "./store/api/api";
 import { reducer } from "./store/reducer";
-// import { fetchWeather } from "./store/api/api-actions";
 
 import "./index.scss";
 
@@ -20,19 +19,6 @@ export const store = configureStore({
       },
     }),
 });
-
-// store.dispatch(fetchWeather());
-
-// function HtmlTagWrapper(Component: (props?: any) => JSX.Element) {
-//   const el = document.getElementById("simple-calendar");
-//   const attrs = el.attributes;
-
-//   const props = attrToObj(attrs);
-//   console.log(props);
-//   ReactDOM.render(<Component {...props} />, el);
-// }
-
-// const el = document.getElementById("weather-widget");
 
 ReactDOM.render(
   <Provider store={store}>

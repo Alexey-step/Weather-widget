@@ -12,8 +12,6 @@ type AppThunk<ReturnType = void> = ThunkAction<
   ActionTypes
 >;
 
-// api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid={API key}
-
 export const fetchWeather =
   (city = "London"): AppThunk =>
   async (dispatch, _getState, api) => {
