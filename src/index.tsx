@@ -5,9 +5,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import App from "./components/app/app";
 import createAPI from "./store/api/api";
 import { reducer } from "./store/reducer";
-import { fetchWeather } from "./store/api/api-actions";
+// import { fetchWeather } from "./store/api/api-actions";
 
-import "./components/styles/styles.scss";
+import "./index.scss";
 
 const api = createAPI();
 
@@ -21,21 +21,22 @@ export const store = configureStore({
     }),
 });
 
-store.dispatch(fetchWeather());
+// store.dispatch(fetchWeather());
 
-class WidgetWeather extends HTMLElement {
-  mountPoint: HTMLDivElement;
+// function HtmlTagWrapper(Component: (props?: any) => JSX.Element) {
+//   const el = document.getElementById("simple-calendar");
+//   const attrs = el.attributes;
 
-  connectedCallback() {
-    this.mountPoint = document.createElement("div");
+//   const props = attrToObj(attrs);
+//   console.log(props);
+//   ReactDOM.render(<Component {...props} />, el);
+// }
 
-    return ReactDOM.render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      this.mountPoint
-    );
-  }
-}
+// const el = document.getElementById("weather-widget");
 
-window.customElements.define("widget-weather", WidgetWeather);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector("#weather-widget")
+);

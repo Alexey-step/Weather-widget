@@ -1,3 +1,6 @@
+@import "../UI/theme/variables.scss";
+@import "../UI/theme/mixins.scss";
+
 .error {
   position: fixed;
   display: flex;

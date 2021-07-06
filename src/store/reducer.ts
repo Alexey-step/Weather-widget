@@ -16,7 +16,14 @@ const InitialState: InitialStateTypes = {
 export const reducer = createReducer(InitialState, (builder) => {
   builder
     .addCase(ActionCreators.setCityWeather, (state, action) => {
-      state.cities = [...state.cities, action.payload];
+      const index = state.cities.findIndex(
+        (city) => city.id === action.payload.id
+      );
+      if (index >= 0) {
+        state.cities = [...state.cities];
+      } else {
+        state.cities = [...state.cities, action.payload];
+      }
     })
     .addCase(ActionCreators.setStatus, (state, action) => {
       state.status = action.payload;

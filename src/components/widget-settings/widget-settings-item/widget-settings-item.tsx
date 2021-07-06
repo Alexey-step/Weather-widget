@@ -6,6 +6,8 @@ import BurgerMenuIcon from "../../UI/icons/burger-menu-icon/burger-menu-icon";
 import TrashBucketIcon from "../../UI/icons/trash-bucket-icon/trash-bucket-icon";
 import { deleteCityWeather } from "../../../store/action-creators";
 
+import "./widget-settings-item.scss";
+
 interface Props {
   city: CityWeatherAdapted;
   index: number;

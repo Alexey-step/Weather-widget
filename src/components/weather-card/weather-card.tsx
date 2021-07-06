@@ -3,6 +3,8 @@ import { CityWeatherAdapted } from "../../types";
 import WeatherCardDescription from "./weather-card-description/weather-card-description";
 import LocationArrowIcon from "../UI/icons/location-arrow-icon/location-arrow-icon";
 
+import "./weather-card.scss";
+
 interface Props {
   city: CityWeatherAdapted;
 }
@@ -21,7 +23,7 @@ const WeatherCard: React.FC<Props> = ({ city }) => {
             <img
               key={item.id}
               className="weather-card__img"
-              src={`http://openweathermap.org/img/wn/${item.icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="weather"
             />
           ))}

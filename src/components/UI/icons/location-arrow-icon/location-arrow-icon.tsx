@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./location-arrow-icon.scss";
+
 const LocationArrowIcon: React.FC = () => {
   return (
     <svg

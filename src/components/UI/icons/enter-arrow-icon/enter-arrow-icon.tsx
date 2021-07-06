@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./enter-arrow-icon.scss";
+
 const EnterArrowIcon: React.FC = () => {
   return (
     <svg

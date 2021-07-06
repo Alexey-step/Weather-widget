@@ -12,6 +12,8 @@ import { CityWeatherAdapted } from "../../types";
 import withError from "../../hocs/with-error/with-error";
 import { setCities } from "../../store/action-creators";
 
+import "./widget-settings.scss";
+
 interface Props {
   citiesList: CityWeatherAdapted[];
 }

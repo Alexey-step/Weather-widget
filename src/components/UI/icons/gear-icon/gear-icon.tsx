@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./gear-icon.scss";
+
 const GearIcon: React.FC = () => {
   return (
     <svg

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./burger-menu-icon.scss";
+
 const BurgerMenuIcon: React.FC = () => {
   return (
     <svg

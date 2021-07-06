@@ -1,3 +1,6 @@
+@import "../UI/theme/variables.scss";
+@import "../UI/theme/mixins.scss";
+
 .weather-card__title {
   @include font(14px, 18px);
   margin: 0;

@@ -7,19 +7,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 
 const optimization = () => {
-  const config = {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendor",
-          test: /node_modules/,
-          chunks: "all",
-          enforce: true,
-        },
-      },
-    },
-  }
-
+  const config = {}
   if (isProd) {
     config.minimize = true,
     config.minimizer = [

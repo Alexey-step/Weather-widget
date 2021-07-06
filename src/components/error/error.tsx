@@ -1,9 +1,15 @@
 import React from "react";
 
-const Error: React.FC = () => {
+import "./error.scss";
+
+interface Props {
+  message?: string;
+}
+
+const Error: React.FC<Props> = ({ message }) => {
   return (
     <div className="error">
-      <p data-testid="Error">Something went wrong!</p>
+      <p data-testid="Error">{message || "Something went wrong!"}</p>
     </div>
   );
 };

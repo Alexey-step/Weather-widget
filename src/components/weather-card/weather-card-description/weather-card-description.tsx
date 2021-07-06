@@ -2,6 +2,8 @@ import React from "react";
 import { CityWeatherAdapted } from "../../../types";
 import { upperCaseFirst } from "../../../common";
 
+import "./weather-card-description.scss";
+
 interface Props {
   city: CityWeatherAdapted;
 }

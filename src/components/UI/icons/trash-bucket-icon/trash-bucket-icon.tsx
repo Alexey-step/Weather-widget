@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./trash-bucket-icon.scss";
+
 const TrashBucketIcon: React.FC = () => {
   return (
     <svg
