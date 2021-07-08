@@ -46,18 +46,13 @@ const App: React.FC = () => {
   if (status === Status.ERROR) {
     return <Error message="Geolocation off" />;
   }
-  // const style = `
-  //   .widget {
-  //     background-color: red;
-  //   }
-  // `;
-  // rel="stylesheet"
 
   return (
     <ReactShadowRoot>
-      {/* <style>{style}</style> */}
-      <link rel="stylesheet" href="/styles.min.css" />
-      {/* <style></style> */}
+      <link
+        rel="stylesheet"
+        href="https://best-weather-widget.netlify.app/styles.min.css"
+      />
       <Widget />
     </ReactShadowRoot>
   );
