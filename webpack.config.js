@@ -2,7 +2,6 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -20,11 +19,10 @@ const optimization = () => {
 }
 
 module.exports = {
-  entry: ['./src/index.tsx', `./src/styles/style.scss`],
+  entry: './src/index.tsx',
   output: {
-    filename: '[name].bundle.js',
+    filename: './[name].bundle.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/'
   },
   optimization: optimization(),
   devServer: {
@@ -47,34 +45,8 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
-            options: { sourceMap: true },
-          },
-        ],
-        exclude: "/node_modules",
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
-            options: { sourceMap: true },
-          },
-          {
-            loader: "sass-loader",
-            options: { sourceMap: true },
-          },
-        ],
-        exclude: "/node_modules",
+        test: /\.(s[ac]ss|css)$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|ico)$/i,
@@ -88,9 +60,6 @@ module.exports = {
       inject: 'body'
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: `styles.min.css`,
-    }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']

@@ -6,7 +6,6 @@ import Widget from "../widget/widget";
 import { CityWeatherAdapted } from "../../types";
 import { fetchUserWeather } from "../../store/api/api-actions";
 import { Status } from "../../const";
-import withError from "../../hocs/with-error/with-error";
 import Error from "../error/error";
 
 const App: React.FC = () => {
@@ -20,11 +19,6 @@ const App: React.FC = () => {
       fetchUserWeather(position.coords.latitude, position.coords.longitude)
     );
   };
-
-  // const geolocationFailure = () => {
-  //   dispatch(setStatus(Status.ERROR));
-  //   setTimeout(() => dispatch(setStatus(Status.PENDING)), 3000);
-  // };
 
   useEffect(() => {
     if (navigator.geolocation) {
