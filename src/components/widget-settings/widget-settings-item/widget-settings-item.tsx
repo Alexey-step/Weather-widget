@@ -22,7 +22,11 @@ const WidgetSettingsItem: React.FC<Props> = ({ city, index }) => {
   };
 
   return (
-    <Draggable draggableId={String(city.id)} index={index}>
+    <Draggable
+      key={String(city.id)}
+      draggableId={String(city.id)}
+      index={index}
+    >
       {(provided: DraggableProvided) => (
         <li
           ref={provided.innerRef}

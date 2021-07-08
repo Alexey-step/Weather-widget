@@ -13,7 +13,7 @@ const WidgetSettingsList: React.FC<Props> = ({ cities }) => {
   return (
     <ul className="widget-settings__list">
       {cities.map((city, index) => (
-        <WidgetSettingsItem index={index} key={city.id} city={city} />
+        <WidgetSettingsItem index={index} key={String(city.id)} city={city} />
       ))}
     </ul>
   );
