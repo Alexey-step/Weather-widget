@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  DragDropContext,
-  Droppable,
-  DropResult,
-  DroppableProvided,
-} from "react-beautiful-dnd";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import AddForm from "../add-form/add-form";
 import WidgetSettingsList from "./widget-settings-list/widget-settings-list";
@@ -55,14 +50,7 @@ const WidgetSettings: React.FC<Props> = ({ citiesList }) => {
     <section className="widget-settings">
       <h2 className="widget-settings__title">Settings</h2>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="list">
-          {(provided: DroppableProvided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
-              <WidgetSettingsList cities={citiesList} />
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
+        <WidgetSettingsList cities={citiesList} />
       </DragDropContext>
       <AddForm />
     </section>

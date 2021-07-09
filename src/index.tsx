@@ -19,15 +19,8 @@ export const store = configureStore({
       },
     }),
 });
-class WidgetWeather extends HTMLElement {
-  mountPoint: HTMLDivElement;
 
-  connectedCallback() {
-    this.mountPoint = document.createElement("div");
-  }
-}
-
-customElements.define("weather-widget", WidgetWeather);
+customElements.define("weather-widget", class extends HTMLElement {});
 
 ReactDOM.render(
   <Provider store={store}>

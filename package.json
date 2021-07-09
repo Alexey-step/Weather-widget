@@ -18,9 +18,11 @@
     "react": "17.0.2",
     "react-beautiful-dnd": "13.1.0",
     "react-dom": "17.0.2",
+    "react-no-ssr": "^1.1.0",
     "react-redux": "7.2.4",
     "react-router-dom": "5.2.0",
-    "react-shadow-root": "^5.0.4"
+    "react-shadow-root": "^5.0.4",
+    "react-sortable-hoc": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.14.5",
@@ -30,6 +32,7 @@
     "@babel/preset-typescript": "7.14.5",
     "@types/react-beautiful-dnd": "13.1.0",
     "@types/react-dom": "17.0.8",
+    "@types/react-no-ssr": "^1.1.2",
     "@types/react-redux": "7.1.16",
     "@types/react-router-dom": "5.1.7",
     "@typescript-eslint/eslint-plugin": "4.28.1",
