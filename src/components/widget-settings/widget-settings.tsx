@@ -6,8 +6,6 @@ import WidgetSettingsList from "./widget-settings-list/widget-settings-list";
 import { CityWeatherAdapted } from "../../types";
 import withError from "../../hocs/with-error/with-error";
 
-import "./widget-settings.scss";
-
 interface Props {
   citiesList: CityWeatherAdapted[];
 }

@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import EnterArrowIcon from "../UI/icons/enter-arrow-icon/enter-arrow-icon";
 import { fetchWeather } from "../../store/api/api-actions";
 
-import "./add-form.scss";
-
 const AddForm: React.FC = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();

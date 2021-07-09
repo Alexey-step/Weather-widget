@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./close-icon.scss";
-
 const CloseIcon: React.FC = () => {
   return (
     <svg

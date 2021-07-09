@@ -6,8 +6,6 @@ import App from "./components/app/app";
 import createAPI from "./store/api/api";
 import { reducer } from "./store/reducer";
 
-import "./index.scss";
-
 const api = createAPI();
 
 export const store = configureStore({

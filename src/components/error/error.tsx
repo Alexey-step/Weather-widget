@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./error.scss";
-
 interface Props {
   message?: string;
 }

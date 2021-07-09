@@ -7,8 +7,6 @@ import TrashBucketIcon from "../../UI/icons/trash-bucket-icon/trash-bucket-icon"
 import { deleteCityWeather } from "../../../store/action-creators";
 import { ItemTypes } from "../../../const";
 
-import "./widget-settings-item.scss";
-
 interface Props {
   city: CityWeatherAdapted;
   id: number;

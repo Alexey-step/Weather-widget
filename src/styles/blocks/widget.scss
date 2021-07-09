@@ -1,7 +1,9 @@
-@import "../UI/theme/variables.scss";
-@import "../UI/theme/mixins.scss";
-
 .widget {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  @include font(16px, 24px);
+  font-style: normal;
+  font-weight: 400;
+  color: $basic-black;
   display: flex;
   flex-direction: column;
   padding: 10px;
