@@ -1,53 +1,88 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Draggable, DraggableProvided } from "react-beautiful-dnd";
+import { useDrag, useDrop } from "react-dnd";
 import { CityWeatherAdapted } from "../../../types";
 import BurgerMenuIcon from "../../UI/icons/burger-menu-icon/burger-menu-icon";
 import TrashBucketIcon from "../../UI/icons/trash-bucket-icon/trash-bucket-icon";
 import { deleteCityWeather } from "../../../store/action-creators";
+import { ItemTypes } from "../../../const";
 
 import "./widget-settings-item.scss";
 
 interface Props {
   city: CityWeatherAdapted;
-  index: number;
+  id: number;
+  moveCity: (id: number, to: number) => void;
+  findCity: (id: number) => { index: number };
 }
 
-const WidgetSettingsItem: React.FC<Props> = ({ city, index }) => {
-  const { name } = city;
+interface Item {
+  id: number;
+  originalIndex: number;
+}
+
+const WidgetSettingsItem: React.FC<Props> = ({
+  city,
+  id,
+  moveCity,
+  findCity,
+}) => {
   const dispatch = useDispatch();
+  const originalIndex = findCity(id).index;
+  const [, drag, preview] = useDrag(
+    () => ({
+      type: ItemTypes.CITY,
+      item: { id, originalIndex },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+      end: (item, monitor) => {
+        const { id: droppedId, originalIndex } = item;
+        const didDrop = monitor.didDrop();
+        if (!didDrop) {
+          moveCity(droppedId, originalIndex);
+        }
+      },
+    }),
+    [id, originalIndex, moveCity]
+  );
+
+  const [, drop] = useDrop(
+    () => ({
+      accept: ItemTypes.CITY,
+      canDrop: () => false,
+      hover({ id: draggedId }: Item) {
+        if (draggedId !== id) {
+          const { index: overIndex } = findCity(id);
+          moveCity(draggedId, overIndex);
+        }
+      },
+    }),
+    [findCity, moveCity]
+  );
 
   const handleDelete = (id: number) => {
     dispatch(deleteCityWeather(id));
   };
 
   return (
-    <Draggable
-      key={String(city.id)}
-      draggableId={String(city.id)}
-      index={index}
-    >
-      {(provided: DraggableProvided) => (
-        <li
-          ref={provided.innerRef}
-          {...provided.dragHandleProps}
-          {...provided.draggableProps}
-          className="widget-settings__item city-item"
-        >
-          <button className="city-item__btn" type="button">
-            <BurgerMenuIcon />
-          </button>
-          <h3 className="city-item__title">{name}</h3>
-          <button
-            onClick={() => handleDelete(city.id)}
-            className="city-item__btn"
-            type="button"
-          >
-            <TrashBucketIcon />
-          </button>
-        </li>
-      )}
-    </Draggable>
+    <li ref={preview} className="widget-settings__item city-item">
+      <button
+        ref={(node) => drag(drop(node))}
+        className="city-item__btn"
+        type="button"
+      >
+        <BurgerMenuIcon />
+      </button>
+      <h3 className="city-item__title">{city.name}</h3>
+      <button
+        onClick={() => handleDelete(city.id)}
+        className="city-item__btn"
+        type="button"
+      >
+        <TrashBucketIcon />
+      </button>
+    </li>
   );
 };
 

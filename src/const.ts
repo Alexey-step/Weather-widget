@@ -9,6 +9,10 @@ export enum Status {
   ERROR = "error",
 }
 
+export const ItemTypes = {
+  CITY: "city",
+};
+
 export const ADAPT_VISIBILITY = 1000;
 
 export const ERROR_TIMEOUT = 3000;
