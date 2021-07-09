@@ -33,4 +33,4 @@ const WidgetSettingsList: React.FC<Props> = ({ cities }) => {
   );
 };
 
-export default withSpinner(WidgetSettingsList);
+export default React.memo(withSpinner(WidgetSettingsList));

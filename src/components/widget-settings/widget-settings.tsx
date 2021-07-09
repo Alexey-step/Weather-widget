@@ -57,4 +57,4 @@ const WidgetSettings: React.FC<Props> = ({ citiesList }) => {
   );
 };
 
-export default withError(WidgetSettings);
+export default React.memo(withError(WidgetSettings));

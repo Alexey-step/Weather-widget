@@ -30,14 +30,11 @@ const WidgetSettingsItem: React.FC<Props> = ({ city, index }) => {
       {(provided: DraggableProvided) => (
         <li
           ref={provided.innerRef}
+          {...provided.dragHandleProps}
           {...provided.draggableProps}
           className="widget-settings__item city-item"
         >
-          <button
-            {...provided.dragHandleProps}
-            className="city-item__btn"
-            type="button"
-          >
+          <button className="city-item__btn" type="button">
             <BurgerMenuIcon />
           </button>
           <h3 className="city-item__title">{name}</h3>
@@ -54,4 +51,4 @@ const WidgetSettingsItem: React.FC<Props> = ({ city, index }) => {
   );
 };
 
-export default WidgetSettingsItem;
+export default React.memo(WidgetSettingsItem);
