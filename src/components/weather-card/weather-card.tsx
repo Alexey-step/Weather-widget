@@ -34,4 +34,4 @@ const WeatherCard: React.FC<Props> = ({ city }) => {
   );
 };
 
-export default WeatherCard;
+export default React.memo(WeatherCard);

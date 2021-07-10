@@ -21,4 +21,4 @@ const WeatherCardDescription: React.FC<Props> = ({ city }) => {
   );
 };
 
-export default WeatherCardDescription;
+export default React.memo(WeatherCardDescription);

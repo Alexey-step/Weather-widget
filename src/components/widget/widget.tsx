@@ -24,7 +24,12 @@ const Widget: React.FC = () => {
       ) : (
         <WidgetSettings citiesList={citiesList} onCitiesList={setCitiesList} />
       )}
-      <button onClick={handleButtonClick} className="widget__btn" type="button">
+      <button
+        onClick={handleButtonClick}
+        className="widget__btn"
+        type="button"
+        aria-label="Gear"
+      >
         {open ? <GearIcon /> : <CloseIcon />}
       </button>
     </section>

@@ -34,4 +34,4 @@ const WeatherCardGroup: React.FC<Props> = ({ city }) => {
   );
 };
 
-export default WeatherCardGroup;
+export default React.memo(WeatherCardGroup);
