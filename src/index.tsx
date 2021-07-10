@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import ReactShadowRoot from "react-shadow-root";
 import { configureStore } from "@reduxjs/toolkit";
 import App from "./components/app/app";
 import createAPI from "./store/api/api";
@@ -21,8 +22,14 @@ export const store = configureStore({
 customElements.define("weather-widget", class extends HTMLElement {});
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <ReactShadowRoot>
+    <link
+      rel="stylesheet"
+      href="https://best-weather-widget.netlify.app/styles.min.css"
+    />
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ReactShadowRoot>,
   document.querySelector("weather-widget")
 );
