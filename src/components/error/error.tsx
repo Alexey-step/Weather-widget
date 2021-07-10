@@ -7,7 +7,7 @@ interface Props {
 const Error: React.FC<Props> = ({ message }) => {
   return (
     <div className="error">
-      <p data-testid="Error">{message || "Something went wrong!"}</p>
+      <p className="error__message">{message || "Something went wrong!"}</p>
     </div>
   );
 };
