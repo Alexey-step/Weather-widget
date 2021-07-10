@@ -16,16 +16,16 @@ const WeatherCard: React.FC<Props> = ({ city }) => {
         {name}, {sys.country}
       </h2>
       <div className="weather-card__wrapper">
-        {weather.map((item) => (
-          <div className="weather-card__img-wrapper">
+        <div className="weather-card__img-wrapper">
+          {weather.map((item) => (
             <img
               key={item.id}
               className="weather-card__img"
               src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="weather"
             />
-          </div>
-        ))}
+          ))}
+        </div>
         <span className="weather-card__temperature">{main.temp}ºC</span>
       </div>
       <WeatherCardDescription city={city} />
