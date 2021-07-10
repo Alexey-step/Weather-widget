@@ -33,6 +33,12 @@
 .weather-card__text {
   margin: 0;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.weather-card__value {
+  margin-left: 7px;
 }
 
 .weather-card__text svg {

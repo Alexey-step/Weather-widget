@@ -15,14 +15,19 @@ const WeatherCardGroup: React.FC<Props> = ({ city }) => {
     <div className="weather-card__group">
       <p className="weather-card__text">
         <LocationArrowIcon />
-        {speed}m/s {deg}
+        <span className="weather-card__value">
+          {speed}m/s {deg}
+        </span>
       </p>
-      <p className="weather-card__text">Pressure: {pressure}hPa</p>
       <p className="weather-card__text">
-        Humidity: <span>{humidity}%</span>
+        Pressure: <span className="weather-card__value">{pressure}hPa</span>
       </p>
-      <p className="weather-card__text">Visibility: {visibility}km</p>
-      <p className="weather-card__text"></p>
+      <p className="weather-card__text">
+        Humidity: <span className="weather-card__value">{humidity}%</span>
+      </p>
+      <p className="weather-card__text">
+        Visibility: <span className="weather-card__value">{visibility}km</span>
+      </p>
     </div>
   );
 };
