@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactShadowRoot from "react-shadow-root";
 import { RootState } from "../../store/reducer";
@@ -11,6 +11,7 @@ import Error from "../error/error";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
   const { status } = useSelector((state: RootState) => state);
 
   const geolocationSuccess = (position: {
@@ -21,10 +22,29 @@ const App: React.FC = () => {
     );
   };
 
+  const geolocationFailure = (positionError: { message: string }) => {
+    setErrorMessage(positionError.message);
+    dispatch(setStatus(Status.ERROR));
+    setTimeout(() => dispatch(setStatus(Status.PENDING)), 3000);
+  };
+
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(geolocationSuccess);
+  //   } else {
+  //     dispatch(setStatus(Status.ERROR));
+  //     setTimeout(() => dispatch(setStatus(Status.PENDING)), 3000);
+  //   }
+  // }, []);
+
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(geolocationSuccess);
+      navigator.geolocation.getCurrentPosition(
+        geolocationSuccess,
+        geolocationFailure
+      );
     } else {
+      setErrorMessage("Geolocation off");
       dispatch(setStatus(Status.ERROR));
       setTimeout(() => dispatch(setStatus(Status.PENDING)), 3000);
     }
@@ -40,7 +60,16 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   if (status === Status.ERROR) {
-    return <Error message="Geolocation off" />;
+    return (
+      <ReactShadowRoot>
+        <link
+          rel="stylesheet"
+          href="https://best-weather-widget.netlify.app/styles.min.css"
+        />
+        <Error message={errorMessage} />
+        <Widget />
+      </ReactShadowRoot>
+    );
   }
 
   return (
