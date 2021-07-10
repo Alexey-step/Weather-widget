@@ -9,9 +9,9 @@ export enum Status {
   ERROR = "error",
 }
 
-export const ItemTypes = {
-  CITY: "city",
-};
+export enum ItemTypes {
+  CITY = "city",
+}
 
 export const ADAPT_VISIBILITY = 1000;
 
