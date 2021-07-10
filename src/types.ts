@@ -18,7 +18,7 @@ export interface CityWeatherAdapted {
   };
   wind: {
     speed: number;
-    deg: string;
+    deg: number;
   };
   main: {
     temp: number;

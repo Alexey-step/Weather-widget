@@ -1,8 +1,13 @@
 import React from "react";
 
-const LocationArrowIcon: React.FC = () => {
+interface Props {
+  deg?: number;
+}
+
+const LocationArrowIcon: React.FC<Props> = ({ deg }) => {
   return (
     <svg
+      style={{ transform: `rotate(${deg}deg)` }}
       className="location-arrow-icon"
       viewBox="0 0 23 23"
       xmlns="http://www.w3.org/2000/svg"

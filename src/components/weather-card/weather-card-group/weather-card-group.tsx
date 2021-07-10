@@ -1,6 +1,7 @@
 import React from "react";
 import { CityWeatherAdapted } from "../../../types";
 import LocationArrowIcon from "../../UI/icons/location-arrow-icon/location-arrow-icon";
+import { getDirection } from "../../../common";
 
 interface Props {
   city: CityWeatherAdapted;
@@ -10,13 +11,14 @@ const WeatherCardGroup: React.FC<Props> = ({ city }) => {
   const { wind, visibility, main } = city;
   const { pressure, humidity } = main;
   const { speed, deg } = wind;
+  const direction = getDirection(deg);
 
   return (
     <div className="weather-card__group">
       <p className="weather-card__text">
-        <LocationArrowIcon />
+        <LocationArrowIcon deg={deg} />
         <span className="weather-card__value">
-          {speed}m/s {deg}
+          {speed}m/s {direction}
         </span>
       </p>
       <p className="weather-card__text">

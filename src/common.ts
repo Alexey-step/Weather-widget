@@ -11,10 +11,6 @@ export const adaptToClient = (data: CityWeather): CityWeatherAdapted => {
       tempMax: Math.round(data.main.temp_max),
       temp: Math.round(data.main.temp),
     },
-    wind: {
-      speed: data.wind.speed,
-      deg: getDirection(data.wind.deg),
-    },
     visibility: data.visibility / ADAPT_VISIBILITY,
   };
 

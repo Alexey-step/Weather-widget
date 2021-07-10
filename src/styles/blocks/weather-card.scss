@@ -1,3 +1,7 @@
+.weather-card {
+  margin-bottom: 10px;
+}
+
 .weather-card__title {
   @include font(14px, 18px);
   margin: 0;
@@ -39,8 +43,4 @@
 
 .weather-card__value {
   margin-left: 7px;
-}
-
-.weather-card__text svg {
-  margin-right: 5px;
 }
