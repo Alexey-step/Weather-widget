@@ -2,7 +2,7 @@
 
 🔎 [Watch project live](https://best-weather-widget.netlify.app/)
 
-The project is a simple SPA widget. This is a widget with a weather forecast in any city, which you can add to any of your website with just two lines of code in the index.html file, it itself determines the initial location of the user and displays the weather forecast for today, and you can also add additional cities. It also saves city data in local storage, and when the page is reloaded, they are saved. You can also change the location of cities with the weather forecast, and put them in the order in which it will be convenient for you. You can also add styles to it for a convenient location on the site, since it is added as a regular html tag. And I made many improvements to the app, such as:
+The project is a simple SPA widget. This is a widget with a weather forecast in any city, which you can add to any of your website with just two lines of code in the index.html file, it itself determines the initial location of the user and displays the weather forecast for today, and you can also add additional cities. It also saves city data in local storage, and when the page is reloaded, they are saved. You can also change the location of cities with the weather forecast, and put them in the order in which it will be convenient for you. You can also add styles to it for a convenient location on the site, since it is added as a regular html tag. And you can not be afraid that it will change any of your styles on the site, since they are completely encapsulated, and will not have any impact. And I made many improvements to the app, such as:
 
 - drag and drop,
 - local storage,
