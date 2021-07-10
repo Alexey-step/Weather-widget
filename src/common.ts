@@ -11,6 +11,10 @@ export const adaptToClient = (data: CityWeather): CityWeatherAdapted => {
       tempMax: Math.round(data.main.temp_max),
       temp: Math.round(data.main.temp),
     },
+    wind: {
+      speed: data.wind.speed,
+      deg: getDirection(data.wind.deg),
+    },
     visibility: data.visibility / ADAPT_VISIBILITY,
   };
 
@@ -23,4 +27,27 @@ export const adaptToClient = (data: CityWeather): CityWeatherAdapted => {
 
 export const upperCaseFirst = (str: string): string => {
   return str[0].toUpperCase() + str.slice(1);
+};
+
+export const getDirection = (num: number): string => {
+  const index = Math.floor(num / 22.5 + 0.5) % 16;
+  const directions = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW",
+  ];
+  return directions[index];
 };

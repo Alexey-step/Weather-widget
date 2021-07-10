@@ -32,7 +32,7 @@ const WeatherCard: React.FC<Props> = ({ city }) => {
       <div className="weather-card__group">
         <p className="weather-card__text">
           <LocationArrowIcon />
-          {wind.speed}m/s
+          {wind.speed}m/s {wind.deg}
         </p>
         <p className="weather-card__text">Pressure: {main.pressure}hPa</p>
         <p className="weather-card__text">

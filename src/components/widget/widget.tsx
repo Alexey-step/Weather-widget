@@ -16,12 +16,23 @@ const Widget: React.FC = () => {
     setCitiesList(cities);
   }, [cities]);
 
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(citiesList));
+  }, [citiesList]);
+
   return (
     <section className="widget">
+      {cities.length < 1 && (
+        <h1
+          className={`widget__title ${cities.length > 0 && "visually-hiden"}`}
+        >
+          add the city in which you want to know the weather
+        </h1>
+      )}
       {open ? (
         citiesList.map((city) => <WeatherCard key={city.id} city={city} />)
       ) : (
-        <WidgetSettings citiesList={citiesList} />
+        <WidgetSettings citiesList={citiesList} onCitiesList={setCitiesList} />
       )}
       <button
         onClick={() => setOpen(!open)}

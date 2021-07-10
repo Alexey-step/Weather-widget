@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from "react";
-import update from "immutability-helper";
+import React, { useCallback } from "react";
 import { useDrop } from "react-dnd";
 import { CityWeatherAdapted } from "../../../types";
 import WidgetSettingsItem from "../widget-settings-item/widget-settings-item";
@@ -8,42 +7,37 @@ import { ItemTypes } from "../../../const";
 
 interface Props {
   cities: CityWeatherAdapted[];
+  onCitiesList: (cities: CityWeatherAdapted[]) => void;
 }
 
-const WidgetSettingsList: React.FC<Props> = ({ cities }) => {
-  const [list, setList] = useState(cities);
-
+const WidgetSettingsList: React.FC<Props> = ({ cities, onCitiesList }) => {
   const findCity = useCallback(
     (id: number) => {
-      const city = list.filter((item) => item.id === id)[0];
+      const city = cities.filter((item) => item.id === id)[0];
       return {
         city,
-        index: list.indexOf(city),
+        index: cities.indexOf(city),
       };
     },
-    [list]
+    [cities]
   );
 
   const moveCity = useCallback(
     (id: number, atIndex: number) => {
       const { city, index } = findCity(id);
-      setList(
-        update(list, {
-          $splice: [
-            [index, 1],
-            [atIndex, 0, city],
-          ],
-        })
-      );
+      const newCityList = [...cities];
+      newCityList.splice(index, 1);
+      newCityList.splice(atIndex, 0, city);
+      onCitiesList(newCityList);
     },
-    [findCity, list, setList]
+    [findCity, cities, onCitiesList]
   );
 
   const [, drop] = useDrop(() => ({ accept: ItemTypes.CITY }));
 
   return (
     <ul ref={drop} className="widget-settings__list">
-      {list.map((city) => (
+      {cities.map((city) => (
         <WidgetSettingsItem
           city={city}
           id={city.id}

@@ -12,6 +12,12 @@
   position: relative;
 }
 
+.widget__title {
+  @include font (20px, 24px);
+  margin: 0;
+  text-align: center;
+}
+
 .widget__btn {
   position: absolute;
   content: "";

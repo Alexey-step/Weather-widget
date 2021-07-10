@@ -8,6 +8,7 @@ import { CityWeatherAdapted } from "../../types";
 
 interface Props {
   citiesList?: CityWeatherAdapted[];
+  onCitiesList?: (cities: CityWeatherAdapted[]) => void;
 }
 
 const withError = (Component: React.FC): React.FC<Props> => {

@@ -8,14 +8,15 @@ import withError from "../../hocs/with-error/with-error";
 
 interface Props {
   citiesList: CityWeatherAdapted[];
+  onCitiesList: (cities: CityWeatherAdapted[]) => void;
 }
 
-const WidgetSettings: React.FC<Props> = ({ citiesList }) => {
+const WidgetSettings: React.FC<Props> = ({ citiesList, onCitiesList }) => {
   return (
     <section className="widget-settings">
       <h2 className="widget-settings__title">Settings</h2>
       <DndProvider backend={HTML5Backend}>
-        <WidgetSettingsList cities={citiesList} />
+        <WidgetSettingsList cities={citiesList} onCitiesList={onCitiesList} />
       </DndProvider>
       <AddForm />
     </section>

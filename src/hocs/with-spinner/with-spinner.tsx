@@ -7,6 +7,7 @@ import { CityWeatherAdapted } from "../../types";
 
 interface Props {
   cities?: CityWeatherAdapted[];
+  onCitiesList?: (cities: CityWeatherAdapted[]) => void;
 }
 
 const withSpinner = (Component: React.FC): React.FC<Props> => {

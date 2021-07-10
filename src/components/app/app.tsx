@@ -11,7 +11,7 @@ import Error from "../error/error";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const { cities, status } = useSelector((state: RootState) => state);
+  const { status } = useSelector((state: RootState) => state);
 
   const geolocationSuccess = (position: {
     coords: { latitude: number; longitude: number };
@@ -38,10 +38,6 @@ const App: React.FC = () => {
       );
     }
   }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(cities));
-  }, [cities]);
 
   if (status === Status.ERROR) {
     return <Error message="Geolocation off" />;
