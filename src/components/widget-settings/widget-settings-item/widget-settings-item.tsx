@@ -1,11 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useDrag, useDrop } from "react-dnd";
 import { CityWeatherAdapted } from "../../../types";
 import BurgerMenuIcon from "../../UI/icons/burger-menu-icon/burger-menu-icon";
 import TrashBucketIcon from "../../UI/icons/trash-bucket-icon/trash-bucket-icon";
-import { deleteCityWeather } from "../../../store/action-creators";
-import { ItemTypes } from "../../../const";
+import useDraggable from "../../../hooks/useDraggable";
 
 interface Props {
   city: CityWeatherAdapted;
@@ -14,54 +11,17 @@ interface Props {
   findCity: (id: number) => { index: number };
 }
 
-interface Item {
-  id: number;
-  originalIndex: number;
-}
-
 const WidgetSettingsItem: React.FC<Props> = ({
   city,
   id,
   moveCity,
   findCity,
 }) => {
-  const dispatch = useDispatch();
-  const originalIndex = findCity(id).index;
-  const [, drag, preview] = useDrag(
-    () => ({
-      type: ItemTypes.CITY,
-      item: { id, originalIndex },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-      }),
-      end: (item, monitor) => {
-        const { id: droppedId, originalIndex } = item;
-        const didDrop = monitor.didDrop();
-        if (!didDrop) {
-          moveCity(droppedId, originalIndex);
-        }
-      },
-    }),
-    [id, originalIndex, moveCity]
-  );
-
-  const [, drop] = useDrop(
-    () => ({
-      accept: ItemTypes.CITY,
-      canDrop: () => false,
-      hover({ id: draggedId }: Item) {
-        if (draggedId !== id) {
-          const { index: overIndex } = findCity(id);
-          moveCity(draggedId, overIndex);
-        }
-      },
-    }),
-    [findCity, moveCity]
-  );
-
-  const handleDelete = (id: number) => {
-    dispatch(deleteCityWeather(id));
-  };
+  const { preview, drag, drop, handleDelete } = useDraggable({
+    id,
+    moveCity,
+    findCity,
+  });
 
   return (
     <li ref={preview} className="widget-settings__item city-item">

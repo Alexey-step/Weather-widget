@@ -1,9 +1,8 @@
-import React, { useCallback } from "react";
-import { useDrop } from "react-dnd";
+import React from "react";
 import { CityWeatherAdapted } from "../../../types";
 import WidgetSettingsItem from "../widget-settings-item/widget-settings-item";
 import withSpinner from "../../../hocs/with-spinner/with-spinner";
-import { ItemTypes } from "../../../const";
+import useDroppable from "../../../hooks/useDroppable";
 
 interface Props {
   cities: CityWeatherAdapted[];
@@ -11,29 +10,7 @@ interface Props {
 }
 
 const WidgetSettingsList: React.FC<Props> = ({ cities, onCitiesList }) => {
-  const findCity = useCallback(
-    (id: number) => {
-      const city = cities.filter((item) => item.id === id)[0];
-      return {
-        city,
-        index: cities.indexOf(city),
-      };
-    },
-    [cities]
-  );
-
-  const moveCity = useCallback(
-    (id: number, atIndex: number) => {
-      const { city, index } = findCity(id);
-      const newCityList = [...cities];
-      newCityList.splice(index, 1);
-      newCityList.splice(atIndex, 0, city);
-      onCitiesList(newCityList);
-    },
-    [findCity, cities, onCitiesList]
-  );
-
-  const [, drop] = useDrop(() => ({ accept: ItemTypes.CITY }));
+  const { findCity, moveCity, drop } = useDroppable({ cities, onCitiesList });
 
   return (
     <ul ref={drop} className="widget-settings__list">

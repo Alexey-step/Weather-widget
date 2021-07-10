@@ -78,3 +78,8 @@ export interface Weather {
   description: string;
   icon: string;
 }
+
+export interface Item {
+  id: number;
+  originalIndex: number;
+}

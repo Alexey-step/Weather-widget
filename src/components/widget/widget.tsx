@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/reducer";
+import React from "react";
 import WeatherCard from "../weather-card/weather-card";
 import GearIcon from "../UI/icons/gear-icon/gear-icon";
 import CloseIcon from "../UI/icons/close-icon/close-icon";
 import WidgetSettings from "../widget-settings/widget-settings";
-import { CityWeatherAdapted } from "../../types";
+import useCities from "../../hooks/useCities";
 
 const Widget: React.FC = () => {
-  const [open, setOpen] = useState(true);
-  const { cities } = useSelector((state: RootState) => state);
-  const [citiesList, setCitiesList] = useState<CityWeatherAdapted[]>(cities);
-
-  useEffect(() => {
-    setCitiesList(cities);
-  }, [cities]);
-
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(citiesList));
-  }, [citiesList]);
+  const { handleButtonClick, setCitiesList, citiesList, open } = useCities();
 
   return (
     <section className="widget">
-      {cities.length < 1 && (
+      {citiesList.length < 1 && (
         <h1
-          className={`widget__title ${cities.length > 0 && "visually-hiden"}`}
+          className={`widget__title ${
+            citiesList.length > 0 && "visually-hidden"
+          }`}
         >
           add the city in which you want to know the weather
         </h1>
@@ -34,11 +24,7 @@ const Widget: React.FC = () => {
       ) : (
         <WidgetSettings citiesList={citiesList} onCitiesList={setCitiesList} />
       )}
-      <button
-        onClick={() => setOpen(!open)}
-        className="widget__btn"
-        type="button"
-      >
+      <button onClick={handleButtonClick} className="widget__btn" type="button">
         {open ? <GearIcon /> : <CloseIcon />}
       </button>
     </section>

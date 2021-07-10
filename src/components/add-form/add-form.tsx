@@ -1,21 +1,9 @@
-import React, { SyntheticEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import EnterArrowIcon from "../UI/icons/enter-arrow-icon/enter-arrow-icon";
-import { fetchWeather } from "../../store/api/api-actions";
+import useAddForm from "../../hooks/useAddForm";
 
 const AddForm: React.FC = () => {
-  const [value, setValue] = useState("");
-  const dispatch = useDispatch();
-
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(evt.target.value);
-  };
-
-  const handleSubmit = (evt: SyntheticEvent) => {
-    evt.preventDefault();
-    dispatch(fetchWeather(value));
-    setValue("");
-  };
+  const { value, handleChange, handleSubmit } = useAddForm();
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>

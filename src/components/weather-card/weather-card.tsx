@@ -1,14 +1,14 @@
 import React from "react";
 import { CityWeatherAdapted } from "../../types";
 import WeatherCardDescription from "./weather-card-description/weather-card-description";
-import LocationArrowIcon from "../UI/icons/location-arrow-icon/location-arrow-icon";
+import WeatherCardGroup from "./weather-card-group/weather-card-group";
 
 interface Props {
   city: CityWeatherAdapted;
 }
 
 const WeatherCard: React.FC<Props> = ({ city }) => {
-  const { name, sys, wind, visibility, main, weather } = city;
+  const { name, sys, main, weather } = city;
 
   return (
     <article className="weather-card">
@@ -29,18 +29,7 @@ const WeatherCard: React.FC<Props> = ({ city }) => {
         <span className="weather-card__temperature">{main.temp}ºC</span>
       </div>
       <WeatherCardDescription city={city} />
-      <div className="weather-card__group">
-        <p className="weather-card__text">
-          <LocationArrowIcon />
-          {wind.speed}m/s {wind.deg}
-        </p>
-        <p className="weather-card__text">Pressure: {main.pressure}hPa</p>
-        <p className="weather-card__text">
-          Humidity: <span>{main.humidity}%</span>
-        </p>
-        <p className="weather-card__text">Visibility: {visibility}km</p>
-        <p className="weather-card__text"></p>
-      </div>
+      <WeatherCardGroup city={city} />
     </article>
   );
 };
