@@ -16,7 +16,7 @@ const Widget: React.FC = () => {
             citiesList.length > 0 && "visually-hidden"
           }`}
         >
-          add the city in which you want to know the weather
+          Add the city in which you want to know the weather
         </h1>
       )}
       {open ? (
